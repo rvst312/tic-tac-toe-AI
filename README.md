@@ -1,37 +1,171 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎮 Tic Tac Toe – Full Stack App
 
-## Getting Started
+Classic Tic Tac Toe game built with **Next.js**, **Tailwind CSS**, and **ShadCN UI**. Features a clean UI, simple AI logic via API, and a persistent match ranking system.
 
-First, run the development server:
+---
+
+## 🧪 Tech Stack
+
+* **Next.js (App Router)** – React Framework for Full Stack apps
+* **Tailwind CSS** – Utility-first styling
+* **ShadCN UI** – Accessible, customizable component library
+* **MongoDB** – Database to store match results
+* **TypeScript** – Type-safe JavaScript
+* **Vercel / Node.js API Routes** – For AI logic & ranking system
+
+---
+
+## 🚀 Getting Started
 
 ```bash
+# 1. Clone the repo
+git clone https://github.com/your-username/tic-tac-toe.git
+cd tic-tac-toe
+
+# 2. Install dependencies
+npm install
+
+# 3. Add environment variables
+cp .env.example .env.local
+# Then update MONGODB_URI with your connection string
+
+# 4. Run the development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to play.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📁 Project Structure
 
-## Learn More
+```bash
+tic-tac-toe/
+├── app/
+│   ├── page.tsx              # Game UI
+│   ├── api/
+│   │   ├── move/route.ts     # POST: IA next move
+│   │   └── ranking/route.ts  # GET/POST: match results
+│   └── layout.tsx            # Global layout & theme
+├── components/
+│   ├── Board.tsx             # 3x3 grid
+│   ├── Status.tsx            # Turn & game state
+│   ├── Ranking.tsx           # Match results table
+│   └── ui/                   # ShadCN components
+├── lib/
+│   ├── game.ts               # Game logic (win, draw, next move)
+│   └── db.ts                 # MongoDB connection
+├── styles/
+│   └── globals.css
+├── public/
+├── tailwind.config.js
+├── tsconfig.json
+└── package.json
+```
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🧠 Architecture Overview
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```plaintext
+               CLIENT (Next.js App)
+               ┌──────────────────────────┐
+               │  UI: page.tsx       │
+               │  Board / Status /   │
+               │  Ranking Components │
+               └────────────────┘
+                        │
+         ┌──────────────────────────────┐
+         │       API Routes (App)      │
+         │   /api/move      /api/ranking
+         └────────────────────────┘
+                  │
+         ┌──────────────────┐
+         │  Game Logic     │  ← checkWinner(), getNextMove()
+         │  lib/game.ts    │
+         └────────────────┘
+                  │
+         ┌───────────────────┐
+         │    Database (DB)   │  ← MongoDB Atlas (or local)
+         │ lib/db.ts          │
+         └───────────────────┘
+```
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📡 API Endpoints
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# tic-tac-toe-AI
+### `POST /api/move`
+
+Returns the AI's next move based on the current board.
+
+**Request body:**
+
+```json
+{
+  "board": ["X", null, "O", null, "X", null, null, null, null]
+}
+```
+
+**Response:**
+
+```json
+{
+  "index": 5
+}
+```
+
+---
+
+### `GET /api/ranking`
+
+Returns the total number of wins, draws, and losses.
+
+```json
+{
+  "player": { "wins": 2, "losses": 3, "draws": 1 },
+  "machine": { "wins": 3, "losses": 2, "draws": 1 }
+}
+```
+
+---
+
+### `POST /api/ranking`
+
+Stores the result of a match.
+
+**Request body:**
+
+```json
+{
+  "result": "draw" | "player" | "machine"
+}
+```
+
+---
+
+## 📌 Notes
+
+* AI logic is basic (not unbeatable), just good enough for a fun match.
+* Game state, validation, and outcome calculation are done server-side.
+* Responsive UI via Tailwind + ShadCN ensures smooth experience across devices.
+
+---
+
+## 🧠 Why This Stack?
+
+> **Next.js App Router** gives full flexibility for UI + API in one place.
+> **Tailwind + ShadCN** ensures fast, accessible, polished UI.
+> **MongoDB** is fast to set up and perfect for storing simple match stats.
+
+---
+
+## 🧼 Clean Code & Commit History
+
+Git history shows incremental decisions and progress. Each commit reflects small, focused improvements — from UI layout to server routes and game logic isolation.
+
+---
+
+## 📄 License
+
+MIT – feel free to fork, modify and build on it 🚀
