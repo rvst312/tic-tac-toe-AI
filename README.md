@@ -69,26 +69,26 @@ tic-tac-toe/
 
 ```plaintext
                CLIENT (Next.js App)
-               ┌──────────────────────────┐
-               │  UI: page.tsx       │
-               │  Board / Status /   │
-               │  Ranking Components │
-               └────────────────┘
+               ┌───────────────────────┐
+               │  UI: page.tsx         │
+               │  Board / Status /     │
+               │  Ranking Components   │
+               └───────────────────────┘
                         │
-         ┌──────────────────────────────┐
-         │       API Routes (App)      │
-         │   /api/move      /api/ranking
-         └────────────────────────┘
+         ┌──────────────────────────────────┐
+         │       API Routes (App)           │
+         │   /api/move      /api/ranking    │
+         └──────────────────────────────────┘
                   │
-         ┌──────────────────┐
-         │  Game Logic     │  ← checkWinner(), getNextMove()
-         │  lib/game.ts    │
-         └────────────────┘
+         ┌────────────────────────────────────────────────────┐
+         │  Game Logic     │  ← checkWinner(), getNextMove()  │
+         │  lib/game.ts    │                                  │
+         └────────────────────────────────────────────────────┘
                   │
-         ┌───────────────────┐
-         │    Database (DB)   │  ← MongoDB Atlas (or local)
-         │ lib/db.ts          │
-         └───────────────────┘
+         ┌────────────────────────────────────────────────────┐
+         │    Database (DB)   │  ← MongoDB Atlas (or local)   │
+         │ lib/db.ts          │                               │
+         └────────────────────────────────────────────────────┘
 ```
 
 ---
