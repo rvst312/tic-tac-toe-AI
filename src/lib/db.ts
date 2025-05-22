@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 
-const uri = process.env.MONGODB_URI || 'mongodb://localhost:27017/Tic-Tac-Toe-AI';
+const uri =
+  process.env.MONGODB_URI || 'mongodb://localhost:27017/Tic-Tac-Toe-AI';
 
 const options: mongoose.ConnectOptions = {
   // You can add specific options here if needed
