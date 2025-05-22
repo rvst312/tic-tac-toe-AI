@@ -6,12 +6,12 @@ Classic Tic Tac Toe game built with **Next.js**, **Tailwind CSS**, and **ShadCN 
 
 ## 🧪 Tech Stack
 
-* **Next.js (App Router)** – React Framework for Full Stack apps
-* **Tailwind CSS** – Utility-first styling
-* **ShadCN UI** – Accessible, customizable component library
-* **MongoDB** – Database to store match results
-* **TypeScript** – Type-safe JavaScript
-* **Vercel / Node.js API Routes** – For AI logic & ranking system
+- **Next.js (App Router)** – React Framework for Full Stack apps
+- **Tailwind CSS** – Utility-first styling
+- **ShadCN UI** – Accessible, customizable component library
+- **MongoDB** – Database to store match results
+- **TypeScript** – Type-safe JavaScript
+- **Vercel / Node.js API Routes** – For AI logic & ranking system
 
 ---
 
@@ -146,9 +146,9 @@ Stores the result of a match.
 
 ## 📌 Notes
 
-* AI logic is basic (not unbeatable), just good enough for a fun match.
-* Game state, validation, and outcome calculation are done server-side.
-* Responsive UI via Tailwind + ShadCN ensures smooth experience across devices.
+- AI logic is basic (not unbeatable), just good enough for a fun match.
+- Game state, validation, and outcome calculation are done server-side.
+- Responsive UI via Tailwind + ShadCN ensures smooth experience across devices.
 
 ---
 
